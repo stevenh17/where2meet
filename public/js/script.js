@@ -79,12 +79,20 @@ function saveLocations() {
             locationData.type = 'marker';
             locationData.coordinates = [overlay.getPosition().lat(), overlay.getPosition().lng()];
         }
-
-        const location = new Location(locationData);
-        console.log(locationData);
-        location.save()
-            .then(() => console.log('Location saved successfully'))
-            .catch(err => console.error('Error saving location:', err));
+        fetch('/api/locations', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(locationData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     });
 }
 
