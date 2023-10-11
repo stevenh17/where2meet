@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
 app.set('views', path.join(__dirname, 'views'));

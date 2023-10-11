@@ -55,9 +55,9 @@
     </div>
 
     <script src="/js/script.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGURjZqf_3kbf15Zoi9H0A7itnJnOoRdM&libraries=drawing&callback=initMap"
-        async defer></script>
+    <% const apiKey=process.env.GOOGLE_MAPS_API_KEY %>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&libraries=drawing&callback=initMap" async
+            defer></script>
 </body>
 
 </html>
