@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Where2Meet</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Ubuntu:ital@0;1&display=swap" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <h1 class="display-2 text-center">Where2Meet</h1>
+  </div>
+
+  <div class="row fixed-bottom">
+    <div class="col fixed-bottom">
+      <div class="mb-2 text-center">
+        <span>Draw to indicate where you're willing to meet! &#40Use the circle, custom shape, or
+          marker tool&#41 </span>
+        <button id="clearButton" onclick="clearAllOverlays()">Clear All Drawings</button>
+      </div>
+      <div id="map"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGURjZqf_3kbf15Zoi9H0A7itnJnOoRdM&libraries=drawing&callback=initMap"
+    async defer></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

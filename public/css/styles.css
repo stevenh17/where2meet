@@ -1,0 +1,25 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h1 {
+    font-weight: 400;
+}
+
+body {
+    overflow-y: auto;
+    height: 100%;
+}
+
+#map {
+    height: 60vh;
+    border: 10px solid #427AA1;
+}
+
+#mapInstruction {
+    font-size: 1.25em;
+}
+
+#clearButton {
+    margin-left: 1.25em;
+}
