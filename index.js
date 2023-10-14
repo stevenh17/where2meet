@@ -23,7 +23,7 @@ db.once("open", () => {
 const Location = require('./models/location');
 
 app.get('/', (req, res) => {
-    res.render('home');
+    res.render('create');
 })
 
 app.post('/api/locations', (req, res) => {
