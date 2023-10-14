@@ -6,6 +6,30 @@ function initMap() {
         center: { lat: 49.1666, lng: -123.1336 },
         zoom: 13
     });
+    fetch(`/api/locations/${eventID}`)
+        .then(response => response.json())
+        .then(locations => {
+            locations.forEach(location => {
+                if (location.type === 'circle') {
+                    new google.maps.Circle({
+                        center: new google.maps.LatLng(location.coordinates[0], location.coordinates[1]),
+                        radius: location.coordinates[2],
+                        map: map
+                    });
+                } else if (location.type === 'polygon') {
+                    new google.maps.Polygon({
+                        paths: location.coordinates.map(coord => new google.maps.LatLng(coord[0], coord[1])),
+                        map: map
+                    });
+                } else if (location.type === 'marker') {
+                    new google.maps.Marker({
+                        position: new google.maps.LatLng(location.coordinates[0], location.coordinates[1]),
+                        map: map
+                    });
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching locations:', error));
 
     const drawingManager = new google.maps.drawing.DrawingManager({
         drawingMode: google.maps.drawing.OverlayType.CIRCLE,
@@ -22,7 +46,7 @@ function initMap() {
         },
         markerOptions: {
             icon: {
-                url: "./meat.png",
+                url: "../meat.png",
                 scaledSize: new google.maps.Size(32, 32),
                 anchor: new google.maps.Point(16, 16)
             }
@@ -79,6 +103,9 @@ function saveLocations() {
             locationData.type = 'marker';
             locationData.coordinates = [overlay.getPosition().lat(), overlay.getPosition().lng()];
         }
+
+        locationData.eventID = eventID;
+
         fetch('/api/locations', {
             method: 'POST',
             headers: {

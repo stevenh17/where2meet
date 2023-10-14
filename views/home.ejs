@@ -37,27 +37,11 @@
         </div>
     </nav>
 
+    <form action="/createEvent" method="POST">
+        <input type="text" placeholder="event_name" name="event_name">
+        <button type="submit">Create Event</button>
+    </form>
 
-    <div class="container-fluid mt-5">
-        <h1 class="display-2 text-center">Plan a Meet-Up</h1>
-    </div>
-
-    <div class="row fixed-bottom">
-        <div class="col fixed-bottom">
-            <div class="mb-2 text-center">
-                <span>Draw to indicate where you're willing to meet! &#40Use the circle, custom shape, or
-                    marker tool&#41 </span>
-                <button id="clearButton" onclick="clearAllOverlays()">Clear All Locations</button>
-                <button id="saveButton" onclick="saveLocations()">Save Locations</button>
-            </div>
-            <div id="map"></div>
-        </div>
-    </div>
-
-    <script src="/js/script.js"></script>
-    <% const apiKey=process.env.GOOGLE_MAPS_API_KEY %>
-        <script src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&libraries=drawing&callback=initMap" async
-            defer></script>
 </body>
 
 </html>
